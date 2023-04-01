@@ -20,6 +20,8 @@
 //
 //===----------------------------------------------------------------------===//
 
+//IS: Stop here
+
 // Generic SlivCore Format
 class SlivCoreInst<bits<8> op, dag outs, dag ins, string asmstr, list<dag> pattern>: Instruction
 {
