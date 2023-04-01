@@ -41,11 +41,21 @@ let Namespace = "SlivCore" in {
   def R13   : SlivCoreGPRReg<13, "r13">,   DwarfRegNum<[13]>;
   def R14   : SlivCoreGPRReg<14, "r14">,   DwarfRegNum<[14]>;
   def R15   : SlivCoreGPRReg<15, "r15">,   DwarfRegNum<[15]>;
+  def R16   : SlivCoreGPRReg<16, "r16">,   DwarfRegNum<[16]>;
+  def R17   : SlivCoreGPRReg<17, "r17">,   DwarfRegNum<[17]>;
+  def R18   : SlivCoreGPRReg<18, "r18">,   DwarfRegNum<[18]>;
+  def R19   : SlivCoreGPRReg<19, "r19">,   DwarfRegNum<[19]>;
 }
+
+//IS: Added some extra registers 
 
 //===----------------------------------------------------------------------===//
 //@Register Classes
 //===----------------------------------------------------------------------===//
 
+// 1 name of the namespace.
+// 2 list of ValueType register type values that are defined in include/llvm/CodeGen/ValueTypes.td. 
+// 3 specifies the alignment required of the registers when they are stored or loaded to memory.
+// 4 specifies which registers are in this class.
 def CPURegs : RegisterClass<"SlivCore", [i32], 32, (add
-  R0, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15)>;
+  R0, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16, R17, R18, R19)>;
