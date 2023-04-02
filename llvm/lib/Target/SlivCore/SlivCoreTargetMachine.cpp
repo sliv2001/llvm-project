@@ -70,8 +70,8 @@ public:
   }
 
   bool addInstSelector() override;
-  void addPreEmitPass() override;
-  void addPreRegAlloc() override;
+  //void addPreEmitPass() override;
+  //void addPreRegAlloc() override;
 };
 
 }
@@ -85,12 +85,13 @@ bool SlivCorePassConfig::addInstSelector() {
   return false;
 }
 
-void SlivCorePassConfig::addPreEmitPass() { llvm_unreachable("preEmitPass added which is not implemented"); }
+//void SlivCorePassConfig::addPreEmitPass() { llvm_unreachable("preEmitPass added which is not implemented"); }
+//
+//void SlivCorePassConfig::addPreRegAlloc() { llvm_unreachable("addPreRegAlloc added which is not implemented"); }
 
-void SlivCorePassConfig::addPreRegAlloc() { llvm_unreachable("addPreRegAlloc added which is not implemented"); }
-
+#if 0
 TargetTransformInfo SlivCoreTargetMachine::getTargetTransformInfo(const Function &F) {
 	llvm_unreachable("Called some wierd function");
 	return TargetTransformInfo(SlivCoreTTIImpl(this, F));
 }
-
+#endif

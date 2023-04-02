@@ -20,8 +20,6 @@
 //
 //===----------------------------------------------------------------------===//
 
-//IS: Stop here
-
 // Generic SlivCore Format
 class SlivCoreInst<bits<8> op, dag outs, dag ins, string asmstr, list<dag> pattern>: Instruction
 {
@@ -29,23 +27,28 @@ class SlivCoreInst<bits<8> op, dag outs, dag ins, string asmstr, list<dag> patte
   // tablegen(... -gen-disassembler) in CMakeLists.txt
   let Namespace = "SlivCore";
   let DecoderNamespace = "SlivCore";
-  let Size = 4;
+  let Size = 6;
 
-  field bits<32> Inst;
+  field bits<48> Inst;
 
   bits<8> Opcode = op;
-  bits<4>  r1 = 0;
-  bits<4>  r2 = 0;
-  bits<16> r3_imm = 0;
+  bits<8>  r1 = 0;
+  bits<32> r2_imm = 0;
 
-  let Inst{31-24} = Opcode;
-  let Inst{23-20} = r1;
-  let Inst{19-16} = r2;
-  let Inst{15-0}  = r3_imm;
+  let Inst{47-40} = Opcode;
+  let Inst{39-32} = r1;
+  let Inst{31-0}  = r2_imm;
 
   let OutOperandList = outs;
   let InOperandList  = ins;
   let AsmString   = asmstr;
   let Pattern     = pattern;
 
+}
+
+// Pseudo instructions format
+class SlivCorePseudoInst<dag outs, dag ins, string asmstr, list<dag> pattern>
+   : SlivCoreInst<0, outs, ins, asmstr, pattern> {
+  let isPseudo = 1;
+  let isCodeGenOnly = 1;
 }
